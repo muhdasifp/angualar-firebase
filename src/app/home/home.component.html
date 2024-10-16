@@ -1,0 +1,31 @@
+<button (click)="adduser()">Add New Data</button>
+<!-- 
+<div class="container">
+    <h2>Firebase Users List</h2>
+    <ul *ngIf="userList.length > 0; else noData">
+        <li *ngFor="let user of userList">
+            <strong>ID:</strong> {{ user.id }} | <strong>Name:</strong> {{ user.name }} | <strong>Email:</strong> {{
+            user.email }}
+        </li>
+    </ul> -->
+
+<!-- Fallback message if no data is available -->
+<!-- <ng-template #noData>
+        <p>No users found.</p>
+    </ng-template> -->
+<!-- </div> -->
+
+<div class="container">
+    <h2>Firebase Users List (Realtime)</h2>
+    <ul *ngIf="(userList$ | async)??[].length > 0; else noData">
+        <li *ngFor="let user of userList$ | async">
+            <strong>ID:</strong> {{ user.id }} | <strong>Name:</strong> {{ user.name }} | <strong>Email:</strong> {{
+            user.email }}
+        </li>
+    </ul>
+
+    <!-- Fallback message if no data is available -->
+    <ng-template #noData>
+        <p>No users found.</p>
+    </ng-template>
+</div>
